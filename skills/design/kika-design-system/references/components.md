@@ -77,8 +77,8 @@ HStack(spacing: KikaSpacing.md) {
 
 ## Anti-Patterns
 
-- ❌ Filled accent-colored buttons for every action
-- ❌ Rounded card containers around single rows
-- ❌ Drop shadows on surfaces
-- ❌ Colored icons in body content (icons stay `textSecondary`)
-- ❌ Multiple primary buttons in the same view
+- Filled accent-colored buttons for every action
+- Rounded card containers around single rows
+- Drop shadows on surfaces
+- Colored icons in body content (icons stay `textSecondary`)
+- Multiple primary buttons in the same view

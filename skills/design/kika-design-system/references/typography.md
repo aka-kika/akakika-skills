@@ -35,7 +35,7 @@ enum KikaFont {
 
 ## Anti-Patterns
 
-- ❌ Multiple weights in one paragraph (regular + semibold + bold)
-- ❌ Font sizes outside the 11–20pt range
-- ❌ Mixing SF Pro with Inter / Roboto / mono in the same view
-- ❌ Tight line height (`1.0`–`1.2`) on body copy
+- Multiple weights in one paragraph (regular + semibold + bold)
+- Font sizes outside the 11–20pt range
+- Mixing SF Pro with Inter / Roboto / mono in the same view
+- Tight line height (`1.0`–`1.2`) on body copy

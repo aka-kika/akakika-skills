@@ -652,16 +652,16 @@ Never rely on color alone.
 ## Common mistakes
 
 ```
-❌ Inspector becomes a second sidebar
-❌ Inspector contains navigation
-❌ Inspector shows every database field
-❌ Inspector is wider than main content
-❌ Inspector duplicates the detail screen
-❌ Inspector contains full logs or full editors
-❌ Inspector has huge dashboard cards
-❌ Destructive actions are too visible
-❌ No empty state for nil selection
-❌ No compact fallback
+Inspector becomes a second sidebar
+Inspector contains navigation
+Inspector shows every database field
+Inspector is wider than main content
+Inspector duplicates the detail screen
+Inspector contains full logs or full editors
+Inspector has huge dashboard cards
+Destructive actions are too visible
+No empty state for nil selection
+No compact fallback
 ```
 
 ## Implementation instructions

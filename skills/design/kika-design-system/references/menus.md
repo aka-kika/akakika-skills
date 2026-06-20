@@ -177,12 +177,12 @@ Use these SF Symbols consistently across all of KIKA. Don't invent alternatives.
 
 ## Anti-Patterns
 
-- ❌ Two-line menu items with `Label` stacked on a description
-- ❌ Colored menu icons (no `accent` tint, no multicolor symbols)
-- ❌ "About KIKA  ⏤  Version 1.0" in the menu
-- ❌ Empty menus (no items under a header)
-- ❌ A divider between every item
-- ❌ Emoji in a menu — never
-- ❌ Trailing ellipsis on items that don't actually open a sheet (`Copy…` is wrong, `Copy` is right)
-- ❌ "Preferences" and "Settings" both in the same app — pick one
-- ❌ "Help" menu with only "About" inside it — move About to the KIKA menu
+- Two-line menu items with `Label` stacked on a description
+- Colored menu icons (no `accent` tint, no multicolor symbols)
+- "About KIKA  ⏤  Version 1.0" in the menu
+- Empty menus (no items under a header)
+- A divider between every item
+- Emoji in a menu — never
+- Trailing ellipsis on items that don't actually open a sheet (`Copy…` is wrong, `Copy` is right)
+- "Preferences" and "Settings" both in the same app — pick one
+- "Help" menu with only "About" inside it — move About to the KIKA menu

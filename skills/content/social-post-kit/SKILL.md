@@ -92,7 +92,7 @@ Download: **<direct download/DMG url, or TODO>**
 
 ---
 
-## 🐦 X / Twitter
+## X / Twitter
 ### Option A — the story (recommended)
 ```
 <3–5 lines: the friction → what it is → free/OSS → repo link>
@@ -109,7 +109,7 @@ Download: **<direct download/DMG url, or TODO>**
 
 ---
 
-## 👾 Reddit
+## Reddit
 > Where to post (best fits) + etiquette (honest, free/OSS, ask for feedback, reply to comments).
 ### Title options
 ```
@@ -123,7 +123,7 @@ Download: **<direct download/DMG url, or TODO>**
 
 ---
 
-## 📸 Instagram (caption for a Reel or the demo GIF)
+## Instagram (caption for a Reel or the demo GIF)
 > Best as a short screen-recording; link goes in bio (IG blocks caption links).
 ```
 <warm, personal caption + a few tasteful hashtags>
@@ -131,7 +131,7 @@ Download: **<direct download/DMG url, or TODO>**
 
 ---
 
-## 💼 LinkedIn
+## LinkedIn
 ```
 <calm, personal, slightly cleaner sentences; the idea, why it's small, free/OSS, repo link>
 ```
@@ -139,14 +139,14 @@ Download: **<direct download/DMG url, or TODO>**
 
 ---
 
-## 🧵 Threads
+## Threads
 ```
 <casual, lowercase, 2–3 lines + link — basically free reach from IG>
 ```
 
 ---
 
-## 🎯 Other platforms — what's actually worth it
+## Other platforms — what's actually worth it
 **1. Short-form video (Reels / TikTok / Shorts).** Best for a 15–30s clip (hook → show it → close + link).
 **2. Bluesky.** Reuse the Threads/X text. Free.
 **3. Product Hunt — later, not today.** Save for a polished release with a video + a couple of users.
@@ -154,7 +154,7 @@ Download: **<direct download/DMG url, or TODO>**
 
 ---
 
-## ✅ Pre-post checklist
+## Pre-post checklist
 - [ ] Repo is public
 - [ ] Attach the best visual (demo GIF / screen-recording / screenshot)
 - [ ] Say it's free + open source (+ license) and state the OS requirement

@@ -257,14 +257,14 @@ Create flow:
 ## Common mistakes
 
 ```
-❌ Starting projects with only source files
-❌ No AGENTS.md
-❌ No task list
-❌ No decision log
-❌ Copying .env.local by default
-❌ Overwriting files silently
-❌ Too many folders with no purpose
-❌ No README setup instructions
+Starting projects with only source files
+No AGENTS.md
+No task list
+No decision log
+Copying .env.local by default
+Overwriting files silently
+Too many folders with no purpose
+No README setup instructions
 ```
 
 ## Prompt template

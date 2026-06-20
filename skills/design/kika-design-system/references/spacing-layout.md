@@ -52,8 +52,8 @@ VStack(alignment: .leading, spacing: KikaSpacing.md) {
 
 ## Anti-Patterns
 
-- ❌ `8pt` / `24pt` / `32pt` gaps bleeding into the layout between elements
-- ❌ Using `KikaSpacing.xs` for layout gaps (it is for component internals only)
-- ❌ Mixing `padding` and `spacing` arbitrarily
-- ❌ Heavy card chrome (rounded rect + thick border) used as a substitute for spacing
-- ❌ Fixed `frame(height:)` on rows
+- `8pt` / `24pt` / `32pt` gaps bleeding into the layout between elements
+- Using `KikaSpacing.xs` for layout gaps (it is for component internals only)
+- Mixing `padding` and `spacing` arbitrarily
+- Heavy card chrome (rounded rect + thick border) used as a substitute for spacing
+- Fixed `frame(height:)` on rows

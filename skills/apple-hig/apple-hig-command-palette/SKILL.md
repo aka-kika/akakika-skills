@@ -783,18 +783,18 @@ Result rows should combine text semantically:
 ## Common mistakes
 
 ```
-❌ Command palette becomes the only navigation
-❌ Too many low-value commands
-❌ No keyboard navigation
-❌ Search field not focused on open
-❌ No ranking logic
-❌ No empty state suggestions
-❌ Destructive actions execute instantly
-❌ Icons are random decoration
-❌ Result rows are too large
-❌ Palette looks like a web modal, not a native panel
-❌ No accessibility labels
-❌ Shortcuts shown but not implemented
+Command palette becomes the only navigation
+Too many low-value commands
+No keyboard navigation
+Search field not focused on open
+No ranking logic
+No empty state suggestions
+Destructive actions execute instantly
+Icons are random decoration
+Result rows are too large
+Palette looks like a web modal, not a native panel
+No accessibility labels
+Shortcuts shown but not implemented
 ```
 
 ## Implementation instructions

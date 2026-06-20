@@ -38,7 +38,7 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 
 ## The skills
 
-### 🧭 Project intelligence — *understand a codebase before you touch it*
+### Project intelligence — *understand a codebase before you touch it*
 | Skill | What it does |
 |---|---|
 | [project-worth-my-time](skills/project-intelligence/project-worth-my-time) | Build-vs-buy verdict engine — should you build this, or does it already exist? Weighs effort, alternatives, and your time. |
@@ -46,7 +46,7 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 | [project-catch-up](skills/project-intelligence/project-catch-up) | A "what changed in my stack" research brief — dependency drift, breaking changes, and news, with severity labels. |
 | [project-workflow](skills/project-intelligence/project-workflow) | Router that orchestrates the three skills above with smart skip rules. |
 
-### 🍎 Apple HIG — *design native Apple apps to spec*
+### Apple HIG — *design native Apple apps to spec*
 | Skill | What it does |
 |---|---|
 | [apple-hig-command-palette](skills/apple-hig/apple-hig-command-palette) | A full ⌘K command palette: scoring/ranking, action registry, and accessibility. |
@@ -57,38 +57,38 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 | [apple-hig-settings](skills/apple-hig/apple-hig-settings) | Settings/Preferences — scenes, `AppStorage` vs Keychain, and `SMAppService`. |
 | [apple-hig-toolbars](skills/apple-hig/apple-hig-toolbars) | Toolbars — per-screen action maps, one clear primary action, and placement discipline. |
 
-### 📐 Swift & macOS — *implementation*
+### Swift & macOS — *implementation*
 | Skill | What it does |
 |---|---|
 | [macos-menubar-swiftui](skills/swift-macos/macos-menubar-swiftui) | Menu-bar apps with `MenuBarExtra` + an AppKit bridge — the accurate, compilable reference. |
 | [apple-app-intents](skills/swift-macos/apple-app-intents) | App Intents / Shortcuts / Siri / Spotlight, with full Swift (intents, entities, enums) and tests. |
 
-### 🤖 AI agent workflows — *run coding agents well*
+### AI agent workflows — *run coding agents well*
 | Skill | What it does |
 |---|---|
 | [agent-state-machine](skills/ai-agents/agent-state-machine) | One shared state machine for agent/task/run states — legal transitions and a recovery path out of every failure. |
 | [local-ai-ollama](skills/ai-agents/local-ai-ollama) | Wire local models (Ollama) into an app or agent — client protocol, status, and fallback rules. |
 | [agent-starter-pack](skills/ai-agents/agent-starter-pack) | Scaffold an agent-ready project — an `AGENTS.md` and an idempotent bootstrap script. |
 
-### 🎨 Design
+### Design
 | Skill | What it does |
 |---|---|
 | [kika-design-system](skills/design/kika-design-system) | A real, production design system — color/type/spacing tokens, components, and a SwiftUI reference implementation. Adopt it or adapt it. |
 | [color-principles](skills/design/color-principles) | Seven principles for premium, calm, accessible color — a review lens for any UI, website, or app. |
 
-### 🧹 Maintenance — *keep a project healthy*
+### Maintenance — *keep a project healthy*
 | Skill | What it does |
 |---|---|
 | [project-folder-cleanup](skills/maintenance/project-folder-cleanup) | Safely clear regenerable clutter (`node_modules`, build caches) — backs up and zips everything before deleting. Ships its own scripts. |
 | [docs-update](skills/maintenance/docs-update) | Audit and update project documentation — READMEs, changelogs, inline docs — and keep them in sync with the code. |
 
-### 🚀 Launch & review
+### Launch & review
 | Skill | What it does |
 |---|---|
 | [product-hunt-polish-review](skills/launch-review/product-hunt-polish-review) | A launch-readiness playbook — first impression, copy do/don'ts, scoring, and a full review prompt. |
 | [emergency-switch-app](skills/launch-review/emergency-switch-app) | A privacy-first "save my context and stop" design — local-first capture, with consent. |
 
-### ✍️ Content & publishing
+### Content & publishing
 | Skill | What it does |
 |---|---|
 | [blog-post-publishing](skills/content/blog-post-publishing) | Turn a draft into a complete, SEO/GEO-optimized blog post wired into your site (template, index, sitemap, deploy). Framework-agnostic. |

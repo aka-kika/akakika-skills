@@ -385,15 +385,15 @@ final class StatusItemController: NSObject {
 ## Common mistakes
 
 ```
-❌ Trying to build rich UI inside .menu style
-❌ Hiding Dock icon but forgetting Quit
-❌ Putting business logic inside views
-❌ Hardcoding global shortcuts with no settings
-❌ Using AppKit bridge when MenuBarExtra is enough
-❌ Making the popover too large
-❌ No Settings scene
-❌ No clear state model
-❌ Colorful or complex menu bar icon
+Trying to build rich UI inside .menu style
+Hiding Dock icon but forgetting Quit
+Putting business logic inside views
+Hardcoding global shortcuts with no settings
+Using AppKit bridge when MenuBarExtra is enough
+Making the popover too large
+No Settings scene
+No clear state model
+Colorful or complex menu bar icon
 ```
 
 ## Prompt template

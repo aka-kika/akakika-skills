@@ -297,14 +297,14 @@ Do not notify for every minor state change.
 ## Common mistakes
 
 ```
-❌ Fake progress
-❌ Blinking aggressive indicators
-❌ Silent failure
-❌ Vague “Something went wrong”
-❌ Success messages that stay forever
-❌ Too many notifications
-❌ Color-only status
-❌ No retry action
+Fake progress
+Blinking aggressive indicators
+Silent failure
+Vague “Something went wrong”
+Success messages that stay forever
+Too many notifications
+Color-only status
+No retry action
 ```
 
 ## Prompt template

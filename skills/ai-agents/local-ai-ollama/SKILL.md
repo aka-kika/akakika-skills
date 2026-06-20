@@ -262,14 +262,14 @@ Do not run long generation with no visible status.
 ## Common mistakes
 
 ```
-❌ Assuming Ollama is running
-❌ Hardcoding one model forever
-❌ Silent cloud fallback
-❌ No timeout handling
-❌ No model refresh
-❌ Vague network errors
-❌ Sending private prompts to cloud despite local-only expectation
-❌ No visible running state
+Assuming Ollama is running
+Hardcoding one model forever
+Silent cloud fallback
+No timeout handling
+No model refresh
+Vague network errors
+Sending private prompts to cloud despite local-only expectation
+No visible running state
 ```
 
 ## Prompt template

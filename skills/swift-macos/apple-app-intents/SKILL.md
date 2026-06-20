@@ -373,15 +373,15 @@ AppName/
 ## Common mistakes
 
 ```
-❌ Too many shortcuts
-❌ Phrases without app name
-❌ Heavy logic inside perform()
-❌ Unsafe destructive actions
-❌ AppEntity without useful suggested entities
-❌ Intent opens app when it should be quick background action
-❌ Background intent tries to show UI
-❌ No error handling
-❌ No testing in Shortcuts app
+Too many shortcuts
+Phrases without app name
+Heavy logic inside perform()
+Unsafe destructive actions
+AppEntity without useful suggested entities
+Intent opens app when it should be quick background action
+Background intent tries to show UI
+No error handling
+No testing in Shortcuts app
 ```
 
 ## Prompt template

@@ -210,15 +210,15 @@ Launch only when the average is 4+ and no category is below 3.
 ## Common mistakes
 
 ```
-❌ Beautiful UI but unclear value
-❌ Too many features on first screen
-❌ No onboarding
-❌ No empty states
-❌ Fake progress
-❌ Placeholder content in screenshots
-❌ No trust/privacy explanation
-❌ Inconsistent icons/spacing
-❌ Product Hunt copy too vague
+Beautiful UI but unclear value
+Too many features on first screen
+No onboarding
+No empty states
+Fake progress
+Placeholder content in screenshots
+No trust/privacy explanation
+Inconsistent icons/spacing
+Product Hunt copy too vague
 ```
 
 ## Prompt template

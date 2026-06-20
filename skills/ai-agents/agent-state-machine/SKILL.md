@@ -266,14 +266,14 @@ Offline → open settings / retry
 ## Common mistakes
 
 ```
-❌ Random status strings across files
-❌ Done/failed only, no waiting/blocked/review
-❌ No transition rules
-❌ No recovery actions
-❌ Notification spam
-❌ Fake progress
-❌ Cancelling instantly becomes cancelled without cleanup
-❌ Completed work disappears before review
+Random status strings across files
+Done/failed only, no waiting/blocked/review
+No transition rules
+No recovery actions
+Notification spam
+Fake progress
+Cancelling instantly becomes cancelled without cleanup
+Completed work disappears before review
 ```
 
 ## Prompt template

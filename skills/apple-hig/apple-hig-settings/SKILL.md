@@ -269,13 +269,13 @@ Use ellipsis for actions needing confirmation.
 ## Common mistakes
 
 ```
-❌ Using Settings for navigation
-❌ Putting selected item details in Settings
-❌ Storing API keys in UserDefaults
-❌ No confirmation for reset/delete actions
-❌ Too many advanced options visible by default
-❌ Long explanations everywhere
-❌ Custom controls where native controls work
+Using Settings for navigation
+Putting selected item details in Settings
+Storing API keys in UserDefaults
+No confirmation for reset/delete actions
+Too many advanced options visible by default
+Long explanations everywhere
+Custom controls where native controls work
 ```
 
 ## Prompt template
