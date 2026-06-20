@@ -6,7 +6,7 @@
 
 Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligence · upkeep · launch polish.
 
-![skills](https://img.shields.io/badge/skills-24-5A6E94)
+![skills](https://img.shields.io/badge/skills-28-5A6E94)
 ![categories](https://img.shields.io/badge/categories-8-5A6E94)
 ![format](https://img.shields.io/badge/format-SKILL.md-2A2A2A)
 ![license](https://img.shields.io/badge/license-MIT-1A1A1A)
@@ -56,6 +56,10 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 | [apple-hig-feedback-status](skills/apple-hig/apple-hig-feedback-status) | Feedback, status, progress, and alerts — a real state vocabulary and no fake percentages. |
 | [apple-hig-settings](skills/apple-hig/apple-hig-settings) | Settings/Preferences — scenes, `AppStorage` vs Keychain, and `SMAppService`. |
 | [apple-hig-toolbars](skills/apple-hig/apple-hig-toolbars) | Toolbars — per-screen action maps, one clear primary action, and placement discipline. |
+| [apple-hig-typography](skills/apple-hig/apple-hig-typography) | The text-style scale — sizes, weights, monospaced digits, and line-length caps for legible Apple typography. |
+| [apple-hig-search-filtering](skills/apple-hig/apple-hig-search-filtering) | Search, filter, and sort — a clean separation of the three, with a working filter function. |
+| [apple-hig-empty-states](skills/apple-hig/apple-hig-empty-states) | Empty, first-run, and no-result states — six typed cases built on `ContentUnavailableView`. |
+| [apple-hig-macos-window-layout](skills/apple-hig/apple-hig-macos-window-layout) | The macOS window shell — sizing, and when to use a sheet vs a window vs a popover. |
 
 ### Swift & macOS — *implementation*
 | Skill | What it does |
