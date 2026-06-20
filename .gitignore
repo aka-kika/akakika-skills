@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+Icon?
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node / tooling (if ever added)
+node_modules/
+dist/
+.cache/
