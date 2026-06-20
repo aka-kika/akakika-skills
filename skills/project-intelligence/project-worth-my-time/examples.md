@@ -4,7 +4,7 @@
 
 **Go deep**
 > **Primary:** Go deep  
-> **In one sentence:** This matches what you've been building in Cursor all month, it's small enough to finish, and nothing you already use replaces it.
+> **In one sentence:** This matches what you've been building all month, it's small enough to finish, and nothing you already use replaces it.
 
 **Cherry-pick**
 > **Primary:** Cherry-pick  
@@ -16,7 +16,7 @@
 
 **Pass**
 > **Primary:** Pass  
-> **In one sentence:** It's a third todo-style experiment and Pieces shows you haven't opened the last two in six weeks.
+> **In one sentence:** It's a third todo-style experiment and you haven't opened the last two in six weeks.
 
 **Use existing instead**
 > **Primary:** Use existing instead  
@@ -34,9 +34,9 @@
 2. Copy your best UI ideas into a note titled `habit-app-ideas` and archive this repo.
 3. Revisit building only if the tool blocks one must-have rule you listed.
 
-## Pieces synthesis sample
+## Personal-context sample (optional — only when a memory MCP is available)
 
-> **About you (from your recent work):** You've spent most of the last month in Cursor on Vite/React sites and one SwiftUI side project. You prefer shipping small tools over large backends. You researched habit apps in the browser last Tuesday but didn't commit to a stack.
+> **About you (from your recent work):** You've spent most of the last month on Vite/React sites and one SwiftUI side project. You prefer shipping small tools over large backends. You researched habit apps in the browser last Tuesday but didn't commit to a stack.
 
 ## Build vs use table sample
 

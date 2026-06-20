@@ -1,6 +1,6 @@
 ---
 name: project-worth-my-time
-description: Use after PROJECT_GUIDE.md exists, when the user asks if a project is worth their time, should they build vs buy, or invokes project-worth-my-time. Follow-up to explain-new-project—uses Pieces MCP (persona + long-term memory) plus project context to recommend whether to invest in a repo, cherry-pick a feature, park the idea, pass, or use an existing polished product instead.
+description: Use after PROJECT_GUIDE.md exists, when the user asks if a project is worth their time, should they build vs buy, or invokes project-worth-my-time. Follow-up to explain-new-project—weighs project context (files, git history, chat) to recommend whether to invest in a repo, cherry-pick a feature, park the idea, pass, or use an existing polished product instead. Optionally enriched by a personal-memory MCP (e.g. Pieces) when one is available.
 disable-model-invocation: true
 ---
 
@@ -20,16 +20,16 @@ Same **audience** and **language rules** as explain-new-project: self-taught, pl
 ## When invoked
 
 1. Confirm **project root**.
-2. **Pieces MCP (required before judging)** — see below. Do not skip if the server is available.
+2. *(Optional)* **Personal context** — if a memory MCP (e.g. Pieces) is available, enrich the verdict with the user's recent work (see below). The verdict never depends on it.
 3. Read **project evidence**: `PROJECT_GUIDE.md`, README, manifest, rough maturity signals (last commit, TODOs, half-built features).
 4. **Alternatives scan** — if the project is a common product type (habit app, landing page, automation, CRM, etc.), search the web for mature tools the user could use instead of building from scratch.
 5. Write the verdict using the template below.
 6. **Always save** `PROJECT_VERDICT.md` at the project root (overwrite if present).
-7. In chat: show **Quick verdict** + **What I'd do** in full; one line points to the file for reasoning, alternatives, and Pieces context.
+7. In chat: show **Quick verdict** + **What I'd do** in full; one line points to the file for reasoning and alternatives.
 
-## Pieces MCP workflow (required)
+## Optional: personal context (memory MCP)
 
-Call these via the **user-pieces** MCP server. If a call fails (PiecesOS off, no data), say so plainly and base the verdict on project files + chat only—do not invent memory.
+If you have a personal-memory MCP server (e.g. Pieces, exposed as `user-pieces` or `pieces`), you can enrich the verdict with the user's recent work and preferences. This is **entirely optional** — the verdict stands on project files, git history, and chat alone. If the server is missing or a call fails, say so plainly and move on. Never invent memory.
 
 ### Step 1 — Persona
 
@@ -59,7 +59,7 @@ Use `ask_pieces_ltm` with `question`, `topics`, `open_files` (current workspace 
 - Question: *Do I tend to start many projects and not finish? What kinds of projects did I actually complete recently?*
 - Topics: unfinished projects, shipped work, motivation
 
-Synthesize Pieces results into a short **About you (from your recent work)** block in the saved file—no raw dumps.
+Synthesize these results into a short **About you (from your recent work)** block in the saved file—no raw dumps.
 
 ## Alternatives scan (existing products)
 
@@ -115,7 +115,7 @@ You may add a **secondary** note (e.g. primary **Park it**, secondary *consider 
 
 ### About you (from your recent work)
 
-[Short synthesis from Pieces persona + LTM; if Pieces unavailable, say so]
+[If a memory MCP was available, a short synthesis of the user's recent work here; otherwise omit this block]
 
 ### Build vs use something that already exists
 
@@ -149,11 +149,11 @@ You may add a **secondary** note (e.g. primary **Park it**, secondary *consider 
 - Direct friend, not a productivity guru
 - Celebrate excitement; challenge **duplicate work** gently
 - Never shame abandoned projects
-- If Pieces shows they already have 3 similar WIPs, say so kindly
+- If you can see (from memory context or git history) they already have 3 similar WIPs, say so kindly
 
 ## What not to do
 
-- Do not give a verdict without attempting Pieces MCP (when available)
+- Use personal-memory context when available, but never block or delay the verdict waiting on it
 - Do not recommend "learn X framework" unless it unblocks *their* stated goal
 - Do not skip the alternatives scan for app-like or SaaS-like projects
 - Do not ask whether to save `PROJECT_VERDICT.md`

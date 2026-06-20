@@ -4,10 +4,10 @@
 
 **A small, carefully curated set of agent skills for building calm, native-feeling software — and for running AI coding agents well.**
 
-Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligence · launch polish.
+Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligence · upkeep · launch polish.
 
-![skills](https://img.shields.io/badge/skills-21-5A6E94)
-![categories](https://img.shields.io/badge/categories-7-5A6E94)
+![skills](https://img.shields.io/badge/skills-24-5A6E94)
+![categories](https://img.shields.io/badge/categories-8-5A6E94)
 ![format](https://img.shields.io/badge/format-SKILL.md-2A2A2A)
 ![license](https://img.shields.io/badge/license-MIT-1A1A1A)
 
@@ -17,7 +17,7 @@ Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligenc
 
 These are [agent skills](#how-skills-work) — plain `SKILL.md` files that teach an AI coding agent how to do one thing *well*. They work with **Claude Code, Codex, Cursor**, and anything else that reads the `SKILL.md` format. No build step, no dependencies — open one and read it.
 
-This isn't a dump of everything I've made. It's the ~20 I'd actually hand to someone, each stripped down, de-branded, and polished to the same bar. The through-line is taste: calm UI, native patterns, privacy by default, and agent workflows that don't fall apart on the second run.
+This isn't a dump of everything I've made. It's the couple-dozen I'd actually hand to someone, each stripped down, de-branded, and polished to the same bar. The through-line is taste: calm UI, native patterns, privacy by default, project upkeep that won't bite you, and agent workflows that don't fall apart on the second run.
 
 ## Quickstart
 
@@ -70,10 +70,17 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 | [local-ai-ollama](skills/ai-agents/local-ai-ollama) | Wire local models (Ollama) into an app or agent — client protocol, status, and fallback rules. |
 | [agent-starter-pack](skills/ai-agents/agent-starter-pack) | Scaffold an agent-ready project — an `AGENTS.md` and an idempotent bootstrap script. |
 
-### 🎨 Design system
+### 🎨 Design
 | Skill | What it does |
 |---|---|
-| [kika-design-system](skills/design-system/kika-design-system) | A real, production design system — color/type/spacing tokens, components, and a SwiftUI reference implementation. Adopt it or adapt it. |
+| [kika-design-system](skills/design/kika-design-system) | A real, production design system — color/type/spacing tokens, components, and a SwiftUI reference implementation. Adopt it or adapt it. |
+| [color-principles](skills/design/color-principles) | Seven principles for premium, calm, accessible color — a review lens for any UI, website, or app. |
+
+### 🧹 Maintenance — *keep a project healthy*
+| Skill | What it does |
+|---|---|
+| [project-folder-cleanup](skills/maintenance/project-folder-cleanup) | Safely clear regenerable clutter (`node_modules`, build caches) — backs up and zips everything before deleting. Ships its own scripts. |
+| [docs-update](skills/maintenance/docs-update) | Audit and update project documentation — READMEs, changelogs, inline docs — and keep them in sync with the code. |
 
 ### 🚀 Launch & review
 | Skill | What it does |
@@ -84,8 +91,8 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 ### ✍️ Content & publishing
 | Skill | What it does |
 |---|---|
-| [akakika-add-blog-post](skills/content/akakika-add-blog-post) | An end-to-end blog publish pipeline (HTML, SEO/GEO, sitemap, deploy). A worked example — adapt it to your own site. |
-| [akakika-social-posts](skills/content/akakika-social-posts) | A multi-platform launch post kit, with per-network voice and honesty rules. |
+| [blog-post-publishing](skills/content/blog-post-publishing) | Turn a draft into a complete, SEO/GEO-optimized blog post wired into your site (template, index, sitemap, deploy). Framework-agnostic. |
+| [social-post-kit](skills/content/social-post-kit) | A ready-to-paste, multi-platform launch post kit (X, Reddit, Instagram, LinkedIn, Threads) with honest, low-hype copy. |
 
 ## How skills work
 

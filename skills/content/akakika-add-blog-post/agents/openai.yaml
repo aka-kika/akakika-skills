@@ -1,4 +1,0 @@
-interface:
-  display_name: "AKAKIKA Add Blog Post"
-  short_description: "Ship AKAKIKA posts with SEO and project links"
-  default_prompt: "Use $akakika-add-blog-post to turn this draft into a published AKAKIKA blog post with project links, SEO/GEO polish, and deployment."

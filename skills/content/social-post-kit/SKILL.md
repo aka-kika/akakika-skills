@@ -1,45 +1,28 @@
 ---
-name: akakika-social-posts
-description: >-
-  Use when she says "make social posts", "social kit", "launch posts", "post kit",
-  "posts for my app", "prep socials", "promote this", or "like the GrokBar/Seedling
-  social posts". Generates a ready-to-paste social post kit (a Markdown file on the
-  Desktop) for an app, tool, or project launch or update — in Kika's calm akakika voice.
-  Covers X, Reddit, Instagram, LinkedIn, Threads, short-form video, and a pre-post
-  checklist. Pull real facts from the project (repo, release, what it does, OS, links).
-metadata:
-  short-description: Create a Desktop social-post kit for an app/project launch
+name: social-post-kit
+description: Use when the user wants a ready-to-paste social post kit for an app, tool, or project launch or update — "make social posts", "launch posts", "post kit", "prep socials", "promote this". Produces one Markdown file with finished posts for X, Reddit, Instagram, LinkedIn, Threads, and short-form video, plus a pre-post checklist. Pull real facts from the project (repo, release, what it does, OS, links).
 ---
 
-# Social Posts
+# Social Post Kit
 
-> Written for akakika.com — adapt the domain, paths, and voice to your own site.
+Create one Markdown file that holds ready-to-paste launch/update posts for an app, tool, or project. It's a practical kit to copy from, not a campaign plan: open one file and post in minutes — each platform has finished text in a code block, plus light notes on where to post and what to attach.
 
-Create one Markdown file that holds ready-to-paste launch/update posts for an app, tool, or
-project Kika built. It is a practical kit she can copy from, not a campaign plan.
+## When to use
 
-The output should let her open one file and post in minutes: each platform has finished text
-in a code block, plus light notes on where to post and what image/video to attach.
+- "make social posts for this app"
+- "create a social kit / post kit"
+- "prep the socials for [app]"
+- "launch posts for [project]"
+- "help me promote this"
 
-## When To Use
-
-Use this skill when Kika says something like:
-
-- make social posts for this app
-- create a social kit / post kit
-- prep the socials for [app]
-- launch posts for [project]
-- posts like the GrokBar / Seedling ones
-- help me promote this
-
-Do not use this for the long-form blog note itself, for actually posting to
-networks, or for paid-ad copy.
+Not for: the long-form blog post itself, actually posting to networks, or paid-ad copy.
 
 ## Voice
 
-Write like Kika / `akakika.com`: personal, calm, understated, build-in-public, a little warm.
-She makes "tiny, calm" tools and talks about them plainly. The energy is "here's a small thing
-I made," not "introducing the future of X."
+Write in the user's voice. If they haven't defined one, default to **calm, build-in-public, low-ego** — it consistently outperforms hype for indie launches:
+
+- The energy is "here's a small thing I made," not "introducing the future of X."
+- Personal, understated, a little warm. Plain English over startup-speak.
 
 Per platform:
 
@@ -47,7 +30,9 @@ Per platform:
 - **LinkedIn:** still personal and calm, just cleaner sentences.
 - **Reddit:** honest and low-ego — "a small thing I made, feedback welcome." Reddit punishes ads.
 
-## Tone Rules
+> Adapt this to the user's actual voice if they have one. The structure below works for any voice.
+
+## Tone rules
 
 Use: short lines, direct verbs, concrete details, plain English, calm confidence, the real story
 (the friction that made the tool worth building), one emoji where it fits.
@@ -56,39 +41,38 @@ Avoid: startup/SaaS language, fake hype, exaggerated claims, words like "revolut
 "game-changing", "seamless", "powerful" (unless truly earned), hashtag spam, exclamation-mark
 piles, and pretending the app is more finished than it is.
 
-Prefer wording like: "some nights you just want to start something", "a tiny, calm macOS app
+Wording that lands: "some nights you just want to start something", "a tiny, calm macOS app
 for…", "it never overwrites anything", "small on purpose", "free + open source", "feedback
 genuinely welcome", "made on a late night, for late nights".
 
-## Inspect First
+## Inspect first
 
-Before writing, gather real facts. Prefer project files and Kika's input over inference:
+Before writing, gather real facts. Prefer project files and the user's input over inference:
 
-- repo URL and current GitHub handle (she is **aka-kika** — confirm with `gh repo view <owner>/<app> --json url,visibility`)
+- repo URL and current handle (confirm with `gh repo view <owner>/<app> --json url,visibility`)
 - latest release tag + direct download/DMG link (`releases/latest/download/<asset>` or the release page)
-- what the app does, who it is for, the friction it solves (check `README.md`, `docs/blog-info.md`, `AGENTS.md`)
+- what the app does, who it is for, the friction it solves (check `README.md`, docs, `AGENTS.md`)
 - platform + minimum OS (state it honestly — a high requirement narrows the audience)
 - free / open source + license; signed / notarized status
 - the best visual: a screenshot, and especially any demo GIF or screen-recording (motion > static)
-- whether this is her first app or one of several (don't reuse a "my first app" angle if it isn't)
+- whether this is their first app or one of several (don't reuse a "my first app" angle if it isn't)
 
 If a fact is unknown, write `TODO: Confirm …` instead of inventing it. Never invent repo URLs,
 versions, or claims.
 
-## Output File
+## Output file
 
-Create one Markdown file on the Desktop, named from the app:
+Create one Markdown file named from the app (default to the user's Desktop, or wherever they ask):
 
 ```text
 ~/Desktop/<App>-social-posts.md
 ```
 
-If Kika gives a different path or name, use that. If a file with that name already exists, ask
-before overwriting (or write `<App>-social-posts-v2.md`).
+If a file with that name already exists, ask before overwriting (or write `<App>-social-posts-v2.md`).
 
-## Required Structure
+## Required structure
 
-Match this shape (this is the proven format from the GrokBar + Seedling kits):
+Match this shape (a proven launch-kit format):
 
 ````md
 # <App> — Social Post Kit
@@ -163,7 +147,7 @@ Download: **<direct download/DMG url, or TODO>**
 ---
 
 ## 🎯 Other platforms — what's actually worth it
-**1. Short-form video (Reels / TikTok / Shorts).** Beats for a 15–30s clip (hook → show it → close + link).
+**1. Short-form video (Reels / TikTok / Shorts).** Best for a 15–30s clip (hook → show it → close + link).
 **2. Bluesky.** Reuse the Threads/X text. Free.
 **3. Product Hunt — later, not today.** Save for a polished release with a video + a couple of users.
 > Suggested order: Instagram → Threads → LinkedIn → X. Reddit when there's an hour to reply. Don't blast everywhere at once.
@@ -178,32 +162,32 @@ Download: **<direct download/DMG url, or TODO>**
 - [ ] Optional: pin the X post / record a cleaner video take
 ````
 
-## Tailoring Rules
+## Tailoring rules
 
 - **Lead with the app's strongest hook.** If it is visual/animated, make every section push video.
   If it is a quiet utility, lean on the friction it removes.
 - **First app vs not.** Use the "my first app, rough in places, help welcome" angle only if true.
   For a later app, use "another small thing I made" and skip the beginner framing.
 - **OS / requirements honesty.** Always state the real minimum OS and any rough edges up front —
-  it saves disappointed comments and fits her low-ego voice.
-- **Links.** Use the current `aka-kika` handle. Include the direct download link where it helps
-  (X bio/Reddit comment/checklist), not buried.
+  it saves disappointed comments and fits a low-ego voice.
+- **Links.** Use the project's current handle. Include the direct download link where it helps
+  (X bio / Reddit comment / checklist), not buried.
 - **Two to three hashtags max.** No walls of tags.
 
-## Quality Check
+## Quality check
 
 Before saving, confirm:
 
-- Does each post sound like Kika — calm, personal, not an ad?
+- Does each post sound like the user (or the chosen voice) — calm, personal, not an ad?
 - Is every post copy-paste ready inside a code block?
-- Are the repo/release/download links real and current (aka-kika)?
+- Are the repo/release/download links real and current?
 - Is the OS requirement and free/OSS status stated honestly?
 - Did it avoid hype words, hashtag spam, and overclaiming?
 - Is the best visual named, and is video pushed if the app is visual?
 
-## Final Response
+## Final response
 
-After creating the file, tell Kika:
+After creating the file, tell the user:
 
 - where it was saved
 - what app/links were used

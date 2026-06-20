@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blog Post Publishing"
+  short_description: "Publish a blog post with SEO/GEO polish and deploy"
+  default_prompt: "Use $blog-post-publishing to turn this draft into a published blog post with project links, SEO/GEO polish, and deployment."
