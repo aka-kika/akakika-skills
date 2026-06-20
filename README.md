@@ -32,7 +32,7 @@ Every skill is a self-contained folder with a `SKILL.md` (Markdown + a little YA
 
 ```bash
 # grab one skill
-git clone https://github.com/akakika/akakika-skills
+git clone https://github.com/aka-kika/akakika-skills
 cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills/
 ```
 
