@@ -17,7 +17,13 @@ Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligenc
 
 These are [agent skills](#how-skills-work) — plain `SKILL.md` files that teach an AI coding agent how to do one thing *well*. They work with **Claude Code, Codex, Cursor**, and anything else that reads the `SKILL.md` format. No build step, no dependencies — open one and read it.
 
-This isn't a dump of everything I've made. It's the couple-dozen I'd actually hand to someone, each stripped down, de-branded, and polished to the same bar. The through-line is taste: calm UI, native patterns, privacy by default, project upkeep that won't bite you, and agent workflows that don't fall apart on the second run.
+This isn't a dump of everything I've made. It's only what I'd hand to someone — each skill stripped down, de-branded, and polished to the same bar. The through-line is taste: calm UI, native patterns, privacy by default, project upkeep that won't bite you, and agent workflows that don't fall apart on the second run.
+
+The collection follows the life of a project — decide, design, build, run, maintain, launch, tell people:
+
+[Project intelligence](#project-intelligence) · [Design](#design) · [Apple HIG](#apple-hig) · [Swift & macOS](#swift--macos) · [AI agent workflows](#ai-agent-workflows) · [Maintenance](#maintenance) · [Launch & review](#launch--review) · [Content & publishing](#content--publishing)
+
+If you only grab three: [new-project-gate](skills/project-intelligence/new-project-gate) before you build, [apple-hig-command-palette](skills/apple-hig/apple-hig-command-palette) while you design, [macos-permissions-privacy](skills/swift-macos/macos-permissions-privacy) when macOS says no.
 
 ## Quickstart
 
@@ -38,33 +44,51 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 
 ## The skills
 
-### Project intelligence — *understand a codebase before you touch it*
+### Project intelligence
+
+*Decide what deserves to exist, understand what already does, and keep agents from drifting.*
+
 | Skill | What it does |
 |---|---|
+| [new-project-gate](skills/project-intelligence/new-project-gate) | A pre-build gate that kills bad ideas cheaply — six checkpoints, an agent lens and a human lens, and a GO / CUT / KILL verdict before the editor opens. |
 | [project-worth-my-time](skills/project-intelligence/project-worth-my-time) | Build-vs-buy verdict engine — should you build this, or does it already exist? Weighs effort, alternatives, and your time. |
 | [explain-new-project](skills/project-intelligence/explain-new-project) | Explains an unfamiliar codebase in plain language, written for non-technical and self-taught builders. |
 | [project-catch-up](skills/project-intelligence/project-catch-up) | A "what changed in my stack" research brief — dependency drift, breaking changes, and news, with severity labels. |
-| [project-workflow](skills/project-intelligence/project-workflow) | Router that orchestrates the three skills above with smart skip rules. |
-| [new-project-gate](skills/project-intelligence/new-project-gate) | A pre-build gate that kills bad ideas cheaply — six checkpoints, an agent lens and a human lens, and a GO / CUT / KILL verdict before the editor opens. |
-| [old-project-audit](skills/project-intelligence/old-project-audit) | KEEP / MERGE / ARCHIVE for tools that already exist — never limbo. Includes a non-negotiable footgun check for stale pipelines pointing at live data. |
+| [project-workflow](skills/project-intelligence/project-workflow) | Router that orchestrates explain / catch-up / worth-my-time with smart skip rules. |
 | [between-runs-audit](skills/project-intelligence/between-runs-audit) | A read-only checkpoint between coding-agent runs — classifies everything KEEP / DELAY / REMOVE and ends with one unambiguous next action. |
+| [old-project-audit](skills/project-intelligence/old-project-audit) | KEEP / MERGE / ARCHIVE for tools that already exist — never limbo. Includes a non-negotiable footgun check for stale pipelines pointing at live data. |
 
-### Apple HIG — *design native Apple apps to spec*
+### Design
+
+*Tokens, color, and taste — the system the apps are built on.*
+
+| Skill | What it does |
+|---|---|
+| [kika-design-system](skills/design/kika-design-system) | A real, production design system — color/type/spacing tokens, components, and a SwiftUI reference implementation. Adopt it or adapt it. |
+| [color-principles](skills/design/color-principles) | Seven principles for premium, calm, accessible color — a review lens for any UI, website, or app. |
+
+### Apple HIG
+
+*Native Apple design, to spec — the patterns that make an app feel like it belongs.*
+
 | Skill | What it does |
 |---|---|
 | [apple-hig-command-palette](skills/apple-hig/apple-hig-command-palette) | A full ⌘K command palette: scoring/ranking, action registry, and accessibility. |
-| [apple-hig-inspectors](skills/apple-hig/apple-hig-inspectors) | Inspector panels done right — when to use one, the item model, and per-type detail views. |
-| [apple-hig-sf-symbols](skills/apple-hig/apple-hig-sf-symbols) | Choosing and using SF Symbols: a nav/action/status vocabulary, variants, and rendering modes. |
 | [apple-hig-sidebars](skills/apple-hig/apple-hig-sidebars) | `NavigationSplitView` sidebars — two- vs three-column, grouping, and keeping navigation calm. |
-| [apple-hig-feedback-status](skills/apple-hig/apple-hig-feedback-status) | Feedback, status, progress, and alerts — a real state vocabulary and no fake percentages. |
-| [apple-hig-settings](skills/apple-hig/apple-hig-settings) | Settings/Preferences — scenes, `AppStorage` vs Keychain, and `SMAppService`. |
 | [apple-hig-toolbars](skills/apple-hig/apple-hig-toolbars) | Toolbars — per-screen action maps, one clear primary action, and placement discipline. |
+| [apple-hig-inspectors](skills/apple-hig/apple-hig-inspectors) | Inspector panels done right — when to use one, the item model, and per-type detail views. |
+| [apple-hig-macos-window-layout](skills/apple-hig/apple-hig-macos-window-layout) | The macOS window shell — sizing, and when to use a sheet vs a window vs a popover. |
 | [apple-hig-typography](skills/apple-hig/apple-hig-typography) | The text-style scale — sizes, weights, monospaced digits, and line-length caps for legible Apple typography. |
+| [apple-hig-sf-symbols](skills/apple-hig/apple-hig-sf-symbols) | Choosing and using SF Symbols — a nav/action/status vocabulary, variants, and rendering modes. |
 | [apple-hig-search-filtering](skills/apple-hig/apple-hig-search-filtering) | Search, filter, and sort — a clean separation of the three, with a working filter function. |
 | [apple-hig-empty-states](skills/apple-hig/apple-hig-empty-states) | Empty, first-run, and no-result states — six typed cases built on `ContentUnavailableView`. |
-| [apple-hig-macos-window-layout](skills/apple-hig/apple-hig-macos-window-layout) | The macOS window shell — sizing, and when to use a sheet vs a window vs a popover. |
+| [apple-hig-feedback-status](skills/apple-hig/apple-hig-feedback-status) | Feedback, status, progress, and alerts — a real state vocabulary and no fake percentages. |
+| [apple-hig-settings](skills/apple-hig/apple-hig-settings) | Settings/Preferences — scenes, `AppStorage` vs Keychain, and `SMAppService`. |
 
-### Swift & macOS — *implementation*
+### Swift & macOS
+
+*Implementation — from `MenuBarExtra` to notarization, the plumbing that has to be exactly right.*
+
 | Skill | What it does |
 |---|---|
 | [macos-menubar-swiftui](skills/swift-macos/macos-menubar-swiftui) | Menu-bar apps with `MenuBarExtra` + an AppKit bridge — the accurate, compilable reference. |
@@ -76,32 +100,38 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 | [macos-clipboard-pasteboard](skills/swift-macos/macos-clipboard-pasteboard) | `NSPasteboard` — rich writes with fallbacks, `changeCount` polling, the concealed/transient conventions, and Sequoia paste privacy. |
 | [macos-app-distribution-dmg](skills/swift-macos/macos-app-distribution-dmg) | Ship outside the App Store — Developer ID + hardened runtime, notarytool, stapling, a clean DMG, and the quarantine test that catches what your Mac can't. |
 
-### AI agent workflows — *run coding agents well*
+### AI agent workflows
+
+*Run coding agents well — state, local models, and projects agents can actually drive.*
+
 | Skill | What it does |
 |---|---|
 | [agent-state-machine](skills/ai-agents/agent-state-machine) | One shared state machine for agent/task/run states — legal transitions and a recovery path out of every failure. |
 | [local-ai-ollama](skills/ai-agents/local-ai-ollama) | Wire local models (Ollama) into an app or agent — client protocol, status, and fallback rules. |
 | [agent-starter-pack](skills/ai-agents/agent-starter-pack) | Scaffold an agent-ready project — an `AGENTS.md` and an idempotent bootstrap script. |
 
-### Design
-| Skill | What it does |
-|---|---|
-| [kika-design-system](skills/design/kika-design-system) | A real, production design system — color/type/spacing tokens, components, and a SwiftUI reference implementation. Adopt it or adapt it. |
-| [color-principles](skills/design/color-principles) | Seven principles for premium, calm, accessible color — a review lens for any UI, website, or app. |
+### Maintenance
 
-### Maintenance — *keep a project healthy*
+*Keep a project healthy after the excitement wears off.*
+
 | Skill | What it does |
 |---|---|
 | [project-folder-cleanup](skills/maintenance/project-folder-cleanup) | Safely clear regenerable clutter (`node_modules`, build caches) — backs up and zips everything before deleting. Ships its own scripts. |
 | [docs-update](skills/maintenance/docs-update) | Audit and update project documentation — READMEs, changelogs, inline docs — and keep them in sync with the code. |
 
 ### Launch & review
+
+*The last mile — polish, review, and ship with a clear head.*
+
 | Skill | What it does |
 |---|---|
 | [product-hunt-polish-review](skills/launch-review/product-hunt-polish-review) | A launch-readiness playbook — first impression, copy do/don'ts, scoring, and a full review prompt. |
 | [emergency-switch-app](skills/launch-review/emergency-switch-app) | A privacy-first "save my context and stop" design — local-first capture, with consent. |
 
 ### Content & publishing
+
+*Tell people, calmly — posts and pages without the hype.*
+
 | Skill | What it does |
 |---|---|
 | [blog-post-publishing](skills/content/blog-post-publishing) | Turn a draft into a complete, SEO/GEO-optimized blog post wired into your site (template, index, sitemap, deploy). Framework-agnostic. |
