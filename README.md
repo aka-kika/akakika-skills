@@ -6,7 +6,7 @@
 
 Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligence · upkeep · launch polish.
 
-![skills](https://img.shields.io/badge/skills-28-5A6E94)
+![skills](https://img.shields.io/badge/skills-31-5A6E94)
 ![categories](https://img.shields.io/badge/categories-8-5A6E94)
 ![format](https://img.shields.io/badge/format-SKILL.md-2A2A2A)
 ![license](https://img.shields.io/badge/license-MIT-1A1A1A)
@@ -45,6 +45,9 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 | [explain-new-project](skills/project-intelligence/explain-new-project) | Explains an unfamiliar codebase in plain language, written for non-technical and self-taught builders. |
 | [project-catch-up](skills/project-intelligence/project-catch-up) | A "what changed in my stack" research brief — dependency drift, breaking changes, and news, with severity labels. |
 | [project-workflow](skills/project-intelligence/project-workflow) | Router that orchestrates the three skills above with smart skip rules. |
+| [new-project-gate](skills/project-intelligence/new-project-gate) | A pre-build gate that kills bad ideas cheaply — six checkpoints, an agent lens and a human lens, and a GO / CUT / KILL verdict before the editor opens. |
+| [old-project-audit](skills/project-intelligence/old-project-audit) | KEEP / MERGE / ARCHIVE for tools that already exist — never limbo. Includes a non-negotiable footgun check for stale pipelines pointing at live data. |
+| [between-runs-audit](skills/project-intelligence/between-runs-audit) | A read-only checkpoint between coding-agent runs — classifies everything KEEP / DELAY / REMOVE and ends with one unambiguous next action. |
 
 ### Apple HIG — *design native Apple apps to spec*
 | Skill | What it does |
