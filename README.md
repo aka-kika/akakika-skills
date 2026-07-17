@@ -6,7 +6,7 @@
 
 Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligence · upkeep · launch polish.
 
-![skills](https://img.shields.io/badge/skills-31-5A6E94)
+![skills](https://img.shields.io/badge/skills-37-5A6E94)
 ![categories](https://img.shields.io/badge/categories-8-5A6E94)
 ![format](https://img.shields.io/badge/format-SKILL.md-2A2A2A)
 ![license](https://img.shields.io/badge/license-MIT-1A1A1A)
@@ -69,6 +69,12 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 |---|---|
 | [macos-menubar-swiftui](skills/swift-macos/macos-menubar-swiftui) | Menu-bar apps with `MenuBarExtra` + an AppKit bridge — the accurate, compilable reference. |
 | [apple-app-intents](skills/swift-macos/apple-app-intents) | App Intents / Shortcuts / Siri / Spotlight, with full Swift (intents, entities, enums) and tests. |
+| [macos-launch-at-login](skills/swift-macos/macos-launch-at-login) | Launch at Login with `SMAppService` — all four statuses handled, an honest Settings toggle, and migration off the deprecated APIs. |
+| [macos-global-shortcuts](skills/swift-macos/macos-global-shortcuts) | In-app vs global shortcuts — the KeyboardShortcuts package or raw `RegisterEventHotKey`, recorder UI, conflicts, and safe defaults. |
+| [macos-notifications](skills/swift-macos/macos-notifications) | `UNUserNotificationCenter` done right — permission at the moment of need, action buttons, click routing, and anti-spam rules. |
+| [macos-permissions-privacy](skills/swift-macos/macos-permissions-privacy) | The TCC permission map — which API, plist key, and entitlement each permission needs, plus denied-state recovery and honest privacy copy. |
+| [macos-clipboard-pasteboard](skills/swift-macos/macos-clipboard-pasteboard) | `NSPasteboard` — rich writes with fallbacks, `changeCount` polling, the concealed/transient conventions, and Sequoia paste privacy. |
+| [macos-app-distribution-dmg](skills/swift-macos/macos-app-distribution-dmg) | Ship outside the App Store — Developer ID + hardened runtime, notarytool, stapling, a clean DMG, and the quarantine test that catches what your Mac can't. |
 
 ### AI agent workflows — *run coding agents well*
 | Skill | What it does |
