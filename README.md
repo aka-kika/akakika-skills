@@ -27,6 +27,35 @@ If you only grab three: [new-project-gate](skills/project-intelligence/new-proje
 
 ## Quickstart
 
+### Install everything on a Mac (recommended)
+
+One-liner — clones (or updates) the repo under `~/Projects/akakika-skills` and **symlinks all 37 skills** into every agent skill directory it knows about (Claude Code, Grok, Goose, Cursor, Codex, Desktop Commander, `~/.agents/skills`):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/aka-kika/akakika-skills/main/install.sh | bash
+```
+
+From a clone:
+
+```bash
+git clone https://github.com/aka-kika/akakika-skills
+cd akakika-skills
+./install.sh
+```
+
+Useful flags:
+
+```bash
+./install.sh --dry-run                 # show what would happen
+./install.sh --copy                    # copy instead of symlink
+./install.sh --targets claude,grok     # only some agents
+./install.sh --dir ~/src/akakika-skills
+```
+
+Symlink installs track the clone: later updates are just `git -C ~/Projects/akakika-skills pull` (re-run `./install.sh` only when new skill *names* appear). Existing skill folders with the same name are moved aside under `~/.skills-backup/` before linking.
+
+### Install one skill by hand
+
 Every skill is a self-contained folder with a `SKILL.md` (Markdown + a little YAML). Drop the folder wherever your agent loads skills:
 
 | Agent | Where it goes |
