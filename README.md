@@ -6,8 +6,8 @@
 
 Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligence · upkeep · launch polish.
 
-![skills](https://img.shields.io/badge/skills-37-5A6E94)
-![categories](https://img.shields.io/badge/categories-8-5A6E94)
+![skills](https://img.shields.io/badge/skills-40-5A6E94)
+![categories](https://img.shields.io/badge/categories-9-5A6E94)
 ![format](https://img.shields.io/badge/format-SKILL.md-2A2A2A)
 ![license](https://img.shields.io/badge/license-MIT-1A1A1A)
 
@@ -19,9 +19,9 @@ These are [agent skills](#how-skills-work) — plain `SKILL.md` files that teach
 
 This isn't a dump of everything I've made. It's only what I'd hand to someone — each skill stripped down, de-branded, and polished to the same bar. The through-line is taste: calm UI, native patterns, privacy by default, project upkeep that won't bite you, and agent workflows that don't fall apart on the second run.
 
-The collection follows the life of a project — decide, design, build, run, maintain, launch, tell people:
+The collection follows the life of a project — decide, design, build, run, maintain, launch, tell people, close the session well:
 
-[Project intelligence](#project-intelligence) · [Design](#design) · [Apple HIG](#apple-hig) · [Swift & macOS](#swift--macos) · [AI agent workflows](#ai-agent-workflows) · [Maintenance](#maintenance) · [Launch & review](#launch--review) · [Content & publishing](#content--publishing)
+[Project intelligence](#project-intelligence) · [Design](#design) · [Apple HIG](#apple-hig) · [Swift & macOS](#swift--macos) · [AI agent workflows](#ai-agent-workflows) · [Session rituals](#session-rituals) · [Maintenance](#maintenance) · [Launch & review](#launch--review) · [Content & publishing](#content--publishing)
 
 If you only grab three: [new-project-gate](skills/project-intelligence/new-project-gate) before you build, [apple-hig-command-palette](skills/apple-hig/apple-hig-command-palette) while you design, [macos-permissions-privacy](skills/swift-macos/macos-permissions-privacy) when macOS says no.
 
@@ -29,7 +29,7 @@ If you only grab three: [new-project-gate](skills/project-intelligence/new-proje
 
 ### Install everything on a Mac (recommended)
 
-One-liner — clones (or updates) the repo under `~/Projects/akakika-skills` and **symlinks all 37 skills** into every agent skill directory it knows about (Claude Code, Grok, Goose, Cursor, Codex, Desktop Commander, `~/.agents/skills`):
+One-liner — clones (or updates) the repo under `~/Projects/akakika-skills` and **symlinks all 40 skills** into every agent skill directory it knows about (Claude Code, Grok, Goose, Cursor, Codex, Desktop Commander, `~/.agents/skills`):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/aka-kika/akakika-skills/main/install.sh | bash
@@ -138,6 +138,16 @@ cp -R akakika-skills/skills/apple-hig/apple-hig-command-palette ~/.claude/skills
 | [agent-state-machine](skills/ai-agents/agent-state-machine) | One shared state machine for agent/task/run states — legal transitions and a recovery path out of every failure. |
 | [local-ai-ollama](skills/ai-agents/local-ai-ollama) | Wire local models (Ollama) into an app or agent — client protocol, status, and fallback rules. |
 | [agent-starter-pack](skills/ai-agents/agent-starter-pack) | Scaffold an agent-ready project — an `AGENTS.md` and an idempotent bootstrap script. |
+
+### Session rituals
+
+*How a working session starts, forks, and ends — options before work, causality and learning after.*
+
+| Skill | What it does |
+|---|---|
+| [spread](skills/session-rituals/spread) | Before improving anything, a menu of 3–5 concrete interventions on the exact input, lightest to heaviest touch — then wait for the pick. No more guessing what "fix this" meant. |
+| [butterfly-effect](skills/session-rituals/butterfly-effect) | A counterfactual session trace — walk backward from the outcome and keep only the 2–4 load-bearing moments without which it wouldn't exist. Causality, not summary. |
+| [til](skills/session-rituals/til) | Teach exactly ONE thing from the session, in plain English, two paragraphs max. Closes the vocabulary gap for builders who ship without a CS background. |
 
 ### Maintenance
 
