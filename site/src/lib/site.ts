@@ -6,7 +6,7 @@ export const SITE = {
     "akakika-skills is a curated collection of 40 agent skills — plain SKILL.md files that teach AI coding agents how to do one thing well. They cover Apple Human Interface Guidelines, SwiftUI and macOS implementation, project intelligence, session rituals, maintenance, launch polish, and calm publishing.",
   description:
     "A carefully curated set of 40 agent skills for Claude Code, Codex, and Cursor. Build calm, native-feeling macOS apps with Apple HIG craft, privacy by default, and agent workflows that hold up on the second run.",
-  urlFallback: "https://akakika.com",
+  urlFallback: "https://akakika-skills.vercel.app",
   repo: "https://github.com/aka-kika/akakika-skills",
   repoSlug: "aka-kika/akakika-skills",
   installUrl:

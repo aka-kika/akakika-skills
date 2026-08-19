@@ -10,8 +10,7 @@ import { SITE, absoluteUrl } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import appCss from "../styles.css?url";
 
-const host = import.meta.env.VITE_PUBLIC_HOSTNAME as string | undefined;
-const ogImage = host ? `https://${host}/og.jpg` : undefined;
+const ogImage = absoluteUrl("/og.jpg");
 
 const title = `${SITE.name} — ${SITE.tagline}`;
 

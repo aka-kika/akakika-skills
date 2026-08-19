@@ -11,6 +11,8 @@ Apple/macOS design craft · SwiftUI · AI-agent workflows · project intelligenc
 ![format](https://img.shields.io/badge/format-SKILL.md-2A2A2A)
 ![license](https://img.shields.io/badge/license-MIT-1A1A1A)
 
+**Browse the collection at [akakika-skills.vercel.app](https://akakika-skills.vercel.app)** — every skill, searchable, with copy-paste installs.
+
 </div>
 
 ---
