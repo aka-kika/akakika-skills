@@ -6,7 +6,7 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: ({ request }) => {
         const origin = new URL(request.url).origin;
-        const today = "2026-08-14";
+        const today = "2026-08-19";
         const urls = [
           { loc: `${origin}/`, changefreq: "weekly", priority: "1.0" },
           ...SKILLS.map((s) => ({
