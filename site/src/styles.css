@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg: var(--kika-bg);
+  --color-surface: var(--kika-surface);
+  --color-elevated: var(--kika-elevated);
+  --color-fg: var(--kika-fg);
+  --color-muted: var(--kika-muted);
+  --color-subtle: var(--kika-subtle);
+  --color-accent: var(--kika-accent);
+  --color-border: var(--kika-border);
+  --color-divider: var(--kika-divider);
+  --color-accent-fg: var(--kika-accent-fg);
+  --color-tone: var(--tone);
+  --color-tone-fg: var(--tone-fg);
+  --color-tone-soft: var(--tone-soft);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    system-ui, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman",
+    Georgia, serif;
+  --font-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: clamp(1.75rem, 1.2rem + 2vw, 2.5rem);
+  --text-3xl: clamp(2.25rem, 1.4rem + 3.2vw, 3.5rem);
+}
+
+:root,
+.dark {
+  --kika-bg: #0d0d0d;
+  --kika-surface: #161616;
+  --kika-elevated: #1f1f1f;
+  --kika-fg: #d9d9d9;
+  --kika-muted: #bfbfbf;
+  --kika-subtle: #8c8c8c;
+  --kika-accent: #6d80a6;
+  --kika-accent-fg: #0d0d0d;
+  --kika-border: #2a2a2a;
+  --kika-divider: rgb(255 255 255 / 0.08);
+  --tone: #6d80a6;
+  --tone-fg: #101218;
+  --tone-soft: color-mix(in oklab, #6d80a6 18%, #161616);
+  color-scheme: dark;
+}
+
+html.light {
+  --kika-bg: #f8f8f8;
+  --kika-surface: #ffffff;
+  --kika-elevated: #f0f0f0;
+  --kika-fg: #1a1a1a;
+  --kika-muted: #4a4a4a;
+  --kika-subtle: #6b6b6b;
+  --kika-accent: #5a6e94;
+  --kika-accent-fg: #f8f8f8;
+  --kika-border: #e0e0e0;
+  --kika-divider: #e5e5e5;
+  color-scheme: light;
+}
+
+/* Muted chapter tints — same family, used only on skill title bars */
+[data-tone="intel"] {
+  --tone: #6d80a6;
+  --tone-fg: #101218;
+  --tone-soft: color-mix(in oklab, #6d80a6 18%, var(--kika-surface));
+}
+[data-tone="design"] {
+  --tone: #8a8178;
+  --tone-fg: #141210;
+  --tone-soft: color-mix(in oklab, #8a8178 18%, var(--kika-surface));
+}
+[data-tone="hig"] {
+  --tone: #7a92b3;
+  --tone-fg: #10141a;
+  --tone-soft: color-mix(in oklab, #7a92b3 18%, var(--kika-surface));
+}
+[data-tone="swift"] {
+  --tone: #5f7a8a;
+  --tone-fg: #0e1214;
+  --tone-soft: color-mix(in oklab, #5f7a8a 18%, var(--kika-surface));
+}
+[data-tone="agents"] {
+  --tone: #6b7c99;
+  --tone-fg: #101318;
+  --tone-soft: color-mix(in oklab, #6b7c99 18%, var(--kika-surface));
+}
+[data-tone="ritual"] {
+  --tone: #7d8894;
+  --tone-fg: #121416;
+  --tone-soft: color-mix(in oklab, #7d8894 18%, var(--kika-surface));
+}
+[data-tone="maint"] {
+  --tone: #6a756e;
+  --tone-fg: #101210;
+  --tone-soft: color-mix(in oklab, #6a756e 18%, var(--kika-surface));
+}
+[data-tone="launch"] {
+  --tone: #7a746c;
+  --tone-fg: #141210;
+  --tone-soft: color-mix(in oklab, #7a746c 18%, var(--kika-surface));
+}
+[data-tone="content"] {
+  --tone: #6e7a8c;
+  --tone-fg: #101318;
+  --tone-soft: color-mix(in oklab, #6e7a8c 18%, var(--kika-surface));
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--kika-bg);
+    color: var(--kika-fg);
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--kika-bg);
+    color: var(--kika-fg);
+    line-height: 1.55;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--kika-accent) 35%, transparent);
+    color: var(--kika-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--kika-accent);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-2 {
+  animation-delay: 70ms;
+}
+.rise-3 {
+  animation-delay: 140ms;
+}
+.rise-4 {
+  animation-delay: 210ms;
+}
+.rise-5 {
+  animation-delay: 280ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
