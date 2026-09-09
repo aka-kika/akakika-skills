@@ -1,428 +1,143 @@
 ---
 name: macos-menubar-swiftui
-description: Use when building, refactoring, or debugging a macOS menu bar app with SwiftUI — MenuBarExtra vs NSStatusItem, .menu vs .window style, LSUIElement, launch at login, global shortcuts, and popover architecture.
+description: Use when building, refactoring, or debugging a macOS menu bar app with SwiftUI, or when a MenuBarExtra misbehaves — the icon renders wrong or vanishes, the Settings window opens behind other apps, the popover cannot be closed, controls inside a .menu style do not render, the Dock icon comes back, or the app quits when the item is dragged off the menu bar. Triggers include menu bar app, status bar app, tray app, MenuBarExtra, NSStatusItem, LSUIElement, hide Dock icon.
 ---
 
 # macOS Menubar SwiftUI
 
-Build, refactor, or debug a macOS menu bar app with SwiftUI. Prefer `MenuBarExtra` for modern apps and drop to `NSStatusItem` + `NSPopover` only when the SwiftUI API cannot meet a requirement.
+Prefer `MenuBarExtra` (macOS 13+). Drop to an `NSStatusItem` bridge only for a requirement the SwiftUI scene cannot express. The scene is simple; the traps are around it, in activation, item mapping, the icon, and lifecycle.
 
-## When to use
+Sibling skills own their topics. Do not restate them here:
 
-Use this skill when building, refactoring, or debugging a macOS menu bar app with SwiftUI.
+- **REQUIRED SUB-SKILL for a Launch at Login toggle:** `macos-launch-at-login` (the four `SMAppService` statuses, `requiresApproval`).
+- Global hotkeys: `macos-global-shortcuts`.
+- A status item that opens a floating `NSPanel` instead of a popover: `swiftui-floating-panel-menubar`.
+- Signing, notarization, DMG: `macos-app-distribution-dmg`.
+- Shortcuts and Siri: `apple-app-intents`.
 
-Use when the user says:
-
-- menu bar app
-- status bar app
-- tray app
-- background macOS utility
-- app that lives in the menu bar
-- `MenuBarExtra`
-- `NSStatusItem`
-- `NSPopover`
-- `LSUIElement`
-- launch at login
-- hide Dock icon
-- global shortcut
-
-## Core rule
-
-```
-Use MenuBarExtra for modern SwiftUI menu bar apps.
-Use NSStatusItem + NSPopover only when MenuBarExtra is not enough.
-```
-
-## When to use this skill
-
-Use this skill for:
-
-- Creating a new macOS menu bar app
-- Modernizing an existing status bar utility
-- Choosing between `.menu` and `.window` style
-- Hiding the Dock icon
-- Adding Settings
-- Adding Quit
-- Adding Launch at Login
-- Adding a global keyboard shortcut
-- Building a popover-style menu bar app
-- Debugging menu bar app architecture
-
-## When not to use this skill
-
-Do not use this skill for:
-
-- Normal iOS apps
-- Full macOS document apps with no menu bar utility behavior
-- Sidebars, toolbars, inspectors, or typography as isolated UI topics
-- App Intents as the main topic; use `apple-app-intents`
-
-## Decision tree
-
-```
-Need macOS 13+ only?
-  yes → use MenuBarExtra
-  no  → use NSStatusItem + NSPopover bridge
-
-Need simple menu actions only?
-  yes → .menuBarExtraStyle(.menu)
-  no  → .menuBarExtraStyle(.window)
-
-Need right-click status item behavior or custom status item drawing?
-  yes → NSStatusItem bridge
-  no  → MenuBarExtra
-```
-
-## Default project setup
-
-1. Create macOS App in Xcode.
-2. Use SwiftUI app lifecycle.
-3. Replace or supplement `WindowGroup` with `MenuBarExtra`.
-4. Add `Settings { SettingsView() }` if the app has preferences.
-5. Add `LSUIElement = YES` only if the app should not appear in the Dock.
-6. Add a template menu bar icon asset.
-7. Add a clear Quit command.
-8. Add Launch at Login only if it is useful.
-
-## Minimal MenuBarExtra app
-
-```swift
-import SwiftUI
-
-@main
-struct MiniUtilityApp: App {
-    var body: some Scene {
-        MenuBarExtra("Mini Utility", systemImage: "bolt.circle") {
-            Button("Run Action") {
-                runPrimaryAction()
-            }
-
-            Divider()
-
-            Button("Settings…") {
-                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-            }
-            .keyboardShortcut(",", modifiers: .command)
-
-            Divider()
-
-            Button("Quit Mini Utility") {
-                NSApplication.shared.terminate(nil)
-            }
-            .keyboardShortcut("q", modifiers: .command)
-        }
-        .menuBarExtraStyle(.menu)
-
-        Settings {
-            SettingsView()
-        }
-    }
-
-    private func runPrimaryAction() {}
-}
-```
-
-## Rich popover menu bar app
-
-Use `.window` style when you need custom SwiftUI views.
-
-```swift
-import SwiftUI
-
-@main
-struct PopoverUtilityApp: App {
-    @State private var appState = AppState()
-
-    var body: some Scene {
-        MenuBarExtra {
-            RootPopoverView()
-                .environment(appState)
-                .frame(width: 360, height: 480)
-        } label: {
-            Image(systemName: "sparkles")
-        }
-        .menuBarExtraStyle(.window)
-
-        Settings {
-            SettingsView()
-                .environment(appState)
-        }
-    }
-}
-```
-
-## Menu style vs window style
+## Decide the shape
 
 | Need | Use |
 | --- | --- |
-| Native dropdown with buttons | `.menu` |
-| Custom SwiftUI layout | `.window` |
-| Forms, lists, search, cards | `.window` |
-| Standard menu commands only | `.menu` |
-| Precise AppKit status item behavior | `NSStatusItem` |
+| Native dropdown of commands | `MenuBarExtra` + `.menuBarExtraStyle(.menu)` |
+| Custom SwiftUI layout, forms, lists, status cards | `MenuBarExtra` + `.menuBarExtraStyle(.window)` |
+| Right-click menu on the item, custom item drawing, drag-and-drop onto the item, variable item width, macOS 12 | `NSStatusItem` bridge (bottom of this file) |
+| Popover must be closed by code, or must survive click-outside | `NSStatusItem` + `NSPopover`, or the floating-panel skill |
 
-## Standard menu structure
-
-```
-Status line, disabled if useful
-────────────────────
-Primary Action
-Secondary Action
-────────────────────
-Settings…       ⌘,
-────────────────────
-Quit App Name   ⌘Q
-```
-
-Rules:
-
-- Always include Quit.
-- Use Settings if the app has preferences.
-- Keep menu items short.
-- Do not build a dashboard inside `.menu` style.
-- Use `.window` style for custom UI.
-
-## Hide Dock icon
-
-Use `LSUIElement` when the app is a background/menu bar utility.
-
-```xml
-<key>LSUIElement</key>
-<true/>
-```
-
-Rules:
-
-- Use only when the app should not appear in the Dock.
-- Provide a Quit command because users cannot quit from Dock.
-- Provide Settings from menu or popover.
-- Avoid hiding the Dock icon for apps with major document/window workflows.
-
-## Settings window
-
-```swift
-Settings {
-    SettingsView()
-}
-```
-
-Open Settings:
-
-```swift
-Button("Settings…") {
-    NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-}
-.keyboardShortcut(",", modifiers: .command)
-```
-
-## Launch at login
-
-```swift
-import ServiceManagement
-
-func setLaunchAtLogin(_ enabled: Bool) {
-    do {
-        if enabled {
-            try SMAppService.mainApp.register()
-        } else {
-            try SMAppService.mainApp.unregister()
-        }
-    } catch {
-        print("Launch at login failed: \(error)")
-    }
-}
-```
-
-SwiftUI setting:
+## Skeleton (window style)
 
 ```swift
 import SwiftUI
-import ServiceManagement
 
-struct LaunchAtLoginToggle: View {
-    @State private var isEnabled = SMAppService.mainApp.status == .enabled
+@main
+struct PulseApp: App {
+    @State private var state = AppState()
+    @AppStorage("showExtra") private var showExtra = true
 
-    var body: some View {
-        Toggle("Launch at Login", isOn: $isEnabled)
-            .onChange(of: isEnabled) { _, newValue in
-                setLaunchAtLogin(newValue)
-            }
+    var body: some Scene {
+        MenuBarExtra("Pulse", systemImage: "waveform", isInserted: $showExtra) {
+            PopoverView()
+                .environment(state)
+                .frame(width: 280)          // .window style needs an explicit width
+        }
+        .menuBarExtraStyle(.window)
+        // Custom asset instead of an SF Symbol: use the label closure.
+        // MenuBarExtra(isInserted: $showExtra) { PopoverView() } label: { Image("MenuBarIcon") }
+
+        Settings {
+            SettingsView()
+                .environment(state)         // scenes share no view tree; inject in both
+        }
     }
 }
-```
 
-## App state pattern
+struct PopoverView: View {
+    @Environment(AppState.self) private var state
 
-Use a single app state object for shared state.
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(state.statusText)
+            Divider()
+            SettingsLink { Text("Settings…") }     // macOS 14+; opens or fronts the Settings scene
+                .keyboardShortcut(",", modifiers: .command)
+            Button("Quit Pulse") { NSApplication.shared.terminate(nil) }
+                .keyboardShortcut("q", modifiers: .command)
+        }
+        .padding(16)
+        .onAppear { NSApp.activate() }             // see "Windows open behind" below
+    }
+}
 
-```swift
-import Observation
-
-@Observable
-final class AppState {
-    var isRunning = false
+@Observable final class AppState {
     var statusText = "Ready"
-    var lastUpdated: Date?
 }
 ```
 
-Fallback for older projects/toolchains:
+`LSUIElement = YES` hides the Dock icon and the app switcher entry. Set it in exactly one place: the Info.plist, or the `INFOPLIST_KEY_LSUIElement` build setting when Xcode generates the plist. Having both lets a build-settings merge drop it and the Dock icon quietly returns. `LSBackgroundOnly` is the wrong key; a background-only app can never become active, so its windows never take keyboard focus.
 
-```swift
-final class AppState: ObservableObject {
-    @Published var isRunning = false
-    @Published var statusText = "Ready"
-    @Published var lastUpdated: Date?
-}
-```
+## What breaks, and why
 
-## Recommended folder structure
+**Windows open behind other apps.** An `LSUIElement` app is never automatically frontmost, so Settings and any `openWindow` window appear behind the current app with no key focus. Call `NSApp.activate()` before opening. `activate(ignoringOtherApps:)` is deprecated since macOS 14 and `NSApp.setActivationPolicy(.regular)` as a fix leaves a Dock icon behind unless you revert it on window close.
 
-```
-AppName/
-  App/
-    AppNameApp.swift
-    AppState.swift
-  Views/
-    RootPopoverView.swift
-    SettingsView.swift
-    Components/
-  Services/
-    LaunchAtLoginService.swift
-    HotkeyService.swift
-    TimerService.swift
-  Models/
-  Resources/
-    Assets.xcassets
-```
+**`showSettingsWindow:` does nothing.** The private selector stopped working on macOS 14. Use `SettingsLink` or the `openSettings` environment action, both macOS 14+.
 
-## Menu bar icon rules
+**Controls inside `.menu` style vanish.** In `.menu` style the content is converted to `NSMenu` items: `Button` becomes an item, `Toggle` a checkmark item, `Text` a disabled item, `Divider` a separator, `Menu` a submenu. `Picker`, `TextField`, `Slider`, images and any custom view are dropped without a warning. Anything richer than a command list needs `.window`.
 
-- Use a template image where possible.
-- Prefer SF Symbols for simple symbols.
-- Keep the icon visually simple.
-- Avoid color unless it communicates state and is supported by the design.
-- Avoid animated/flashing icons.
-- Do not rely on the icon always being visible; macOS can hide menu extras when space is constrained.
+**The popover cannot be dismissed from code.** `.window` style has no public close API and `dismiss` does not close it. A button that opens Settings leaves the popover up. Workarounds: `NSApp.keyWindow?.close()` right after the action, or the `NSStatusItem` bridge where `popover.performClose` is yours.
 
-## Global shortcuts
+**The app quits when the user drags the item off the menu bar.** Apple terminates a menu-bar-only app when its extra is removed. Persist state on every change, never on quit, and use the `isInserted` binding so hiding the item is a preference rather than a removal. macOS also hides extras when the bar is crowded, so nothing critical may live only behind the icon.
 
-For production apps, prefer a well-tested shortcut package or a focused AppKit service.
+**The icon is grey, does not invert, or is blurry.** The label image must be a template: an asset with Render As set to Template Image, black with alpha, one single-scale PDF, or an SF Symbol via `systemImage:`. `.renderingMode(.original)` on the label breaks the highlight and dark-mode tinting. Dock-sized raster PNGs blur at the 16 to 18 point menu bar height. On macOS 26 the bar is translucent, so check the glyph idle and clicked in both appearances on a real 26 build.
 
-Possible approaches:
+**Keyboard shortcuts on popover buttons do nothing.** They only fire while the popover window is key. A hotkey that must work from anywhere is a global shortcut; see the sibling skill.
 
-```
-NSEvent monitors = simple listening, limited control
-Carbon hotkeys / packages = better for global shortcuts
-KeyboardShortcuts package = practical default for indie SwiftUI apps
-```
+**Launch at Login toggle lies.** `SMAppService.mainApp.status` has four values and the user can flip the item in System Settings behind your back. Read the status live on appear, handle `.requiresApproval`, and test only a signed build launched from `/Applications`. The sibling skill has the complete toggle.
 
-Rules:
+## NSStatusItem bridge
 
-- Let users customize shortcuts.
-- Avoid stealing common system shortcuts.
-- Show shortcuts in UI where relevant.
-- Make shortcuts optional.
-
-## AppKit bridge only when needed
-
-Use AppKit bridge for:
-
-- macOS 12 support
-- Right-click status item menu
-- Custom status item behavior
-- Direct popover control
-- Custom `NSStatusItem` length or drawing
-
-Pattern:
+Only when the table above sends you here. Keep it in one controller owned by the app delegate.
 
 ```swift
 import AppKit
 import SwiftUI
 
 final class StatusItemController: NSObject {
-    private var statusItem: NSStatusItem?
+    private var item: NSStatusItem?
     private let popover = NSPopover()
 
     func start() {
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem?.button?.image = NSImage(systemSymbolName: "bolt.circle", accessibilityDescription: "App")
-        statusItem?.button?.target = self
-        statusItem?.button?.action = #selector(togglePopover)
-
-        popover.contentViewController = NSHostingController(rootView: RootPopoverView())
-        popover.behavior = .transient
+        item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        item?.button?.image = NSImage(systemSymbolName: "waveform", accessibilityDescription: "Pulse")
+        item?.button?.target = self
+        item?.button?.action = #selector(toggle)
+        item?.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])   // right-click reaches you
+        popover.contentViewController = NSHostingController(rootView: PopoverView())
+        popover.behavior = .transient                                  // click-outside closes it
     }
 
-    @objc private func togglePopover() {
-        guard let button = statusItem?.button else { return }
-        if popover.isShown {
-            popover.performClose(nil)
-        } else {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-        }
+    @objc private func toggle() {
+        guard let button = item?.button else { return }
+        if NSApp.currentEvent?.type == .rightMouseUp { item?.menu = contextMenu(); button.performClick(nil); item?.menu = nil; return }
+        popover.isShown ? popover.performClose(nil)
+                        : popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
     }
+
+    private func contextMenu() -> NSMenu { NSMenu() }
 }
 ```
 
-## Design checklist
+Set `item?.menu` only for the duration of the right-click; a permanently assigned menu swallows left clicks.
+
+## Checklist
 
 ```
-[ ] Uses MenuBarExtra unless AppKit bridge is justified
-[ ] Chooses .menu or .window intentionally
-[ ] Includes Quit
-[ ] Includes Settings if preferences exist
-[ ] Uses LSUIElement only when appropriate
-[ ] Menu bar icon is simple and template-friendly
-[ ] Popover size is constrained
-[ ] State is centralized
-[ ] Services are separated from views
-[ ] Launch at Login handles errors
-[ ] Global shortcuts are user-configurable
-[ ] App still works if menu bar item is hidden
+[ ] .menu or .window chosen from the table, not by habit
+[ ] LSUIElement set in one place; Quit present in the menu or popover
+[ ] NSApp.activate() before any window opens from the extra
+[ ] Label is an SF Symbol or a template asset; no .renderingMode(.original)
+[ ] State persisted on change; isInserted bound to a preference
+[ ] Settings via SettingsLink or openSettings, macOS 14+
+[ ] Launch at Login handled by macos-launch-at-login
 ```
 
-## Common mistakes
-
-```
-Trying to build rich UI inside .menu style
-Hiding Dock icon but forgetting Quit
-Putting business logic inside views
-Hardcoding global shortcuts with no settings
-Using AppKit bridge when MenuBarExtra is enough
-Making the popover too large
-No Settings scene
-No clear state model
-Colorful or complex menu bar icon
-```
-
-## Prompt template
-
-Drop this into any coding agent (Claude Code, Codex, Cursor, …) to apply the skill:
-
-```
-Use the macos-menubar-swiftui skill to build or improve this macOS menu bar app.
-
-Rules:
-- Prefer SwiftUI MenuBarExtra for macOS 13+.
-- Use .menu style for simple menu actions.
-- Use .window style for custom SwiftUI popover UI.
-- Use NSStatusItem + NSPopover only when MenuBarExtra cannot meet the requirement.
-- Add LSUIElement only if the app should hide from Dock.
-- Always include Quit when hiding the Dock icon.
-- Add Settings scene if preferences exist.
-- Keep popover size constrained.
-- Keep business logic in Services.
-- Use centralized app state.
-- Use template-friendly menu bar icon.
-- Add Launch at Login with SMAppService only where useful.
-- Add keyboard shortcuts carefully and make global shortcuts configurable.
-- Compile in Xcode and fix availability issues.
-
-After coding:
-1. List files changed.
-2. Explain MenuBarExtra style choice.
-3. Explain Dock/Settings/Quit behavior.
-4. Explain state and services structure.
-5. Give manual test steps.
-```
+Manual test: launch from `/Applications`, open Settings from the popover and confirm it is frontmost with focus, switch appearance and click the item to check the icon, Cmd-drag the item off the bar and relaunch to confirm state survived.
