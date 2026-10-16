@@ -31,7 +31,7 @@ If you only grab three: [new-project-gate](skills/project-intelligence/new-proje
 
 ### Install everything on a Mac (recommended)
 
-One-liner — clones (or updates) the repo under `~/Projects/akakika-skills` and **symlinks all 40 skills** into every agent skill directory it knows about (Claude Code, Grok, Goose, Cursor, Codex, Desktop Commander, `~/.agents/skills`):
+One-liner — clones (or updates) the repo under `~/Projects/akakika-skills` and **symlinks all 40 skills** into every agent skill directory it knows about (Claude Code, Grok, Goose, Cursor, Codex, `~/.agents/skills`):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/aka-kika/akakika-skills/main/install.sh | bash

@@ -30,7 +30,7 @@ Usage: install.sh [options]
   --symlink     Link skills into agent dirs (default; updates follow git pull)
   --copy        Copy skill folders instead of symlinking
   --dry-run     Print actions without changing anything
-  --targets L   Comma list: claude,agents,grok,goose,cursor,codex,desktop-commander
+  --targets L   Comma list: claude,agents,grok,goose,cursor,codex
   --dir PATH    Clone / repo directory (default: ~/Projects/akakika-skills)
   -h, --help    Show this help
 EOF
@@ -117,7 +117,6 @@ add_target "grok"              "$HOME/.grok/skills"
 add_target "goose"             "$HOME/.config/goose/skills"
 add_target "cursor"            "$HOME/.cursor/skills"
 add_target "codex"             "$HOME/.codex/skills"
-add_target "desktop-commander" "$HOME/.desktop-commander/skills"
 
 target_enabled() {
   local name="$1"
